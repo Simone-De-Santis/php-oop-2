@@ -8,9 +8,53 @@
 // Gestite eventuali eccezioni che si possono verificare utilizzando il try catch
 
 
+//# classe prodotto 
+class Product
+{
+    //* proprieties
 
+    public $id;
+    public $name;
+    public $brand;
+    public $type;
+    public $price;
+    public $size;
+    public $barcode;
 
+    //* constructor
+    public function __construct($id, $brand, $barcode = '999-999-99')
+    {
+        $this->id = $id;
+        $this->brand = $brand;
+        $this->barcode = $barcode;
+    }
+}
+//instanzio prodotto
+$shampoo = new Product('01', 'loreal',);
+var_dump($shampoo);
 
+//# classe utente
+class User
+{
+    //* proprieties
+
+    public $name;
+    public $last_name;
+    public $email;
+    public $age;
+    public $street_address;
+    public $telephone_number;
+    public $type_of_subscription;
+    //* constructor
+    public function __construct($name, $last_name, $email)
+    {
+        $this->name = $name;
+        $this->last_name = $last_name;
+        $this->email = $email;
+    }
+}
+$user1 = new User('Simone', 'De Santis', 'simone@yahoo.it');
+var_dump($user1);
 
 ?>
 
