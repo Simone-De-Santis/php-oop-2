@@ -54,7 +54,7 @@ $shampoo = new Product('01', 'loreal',);
 var_dump($shampoo);
 echo $shampoo->getDiscount();
 //# classe utente
-class User
+class BaseUser
 {
     //* proprieties
 
@@ -73,8 +73,56 @@ class User
         $this->email = $email;
     }
 }
-$user1 = new User('Simone', 'De Santis', 'simone@yahoo.it');
+$user1 = new BaseUser('Simone', 'De Santis', 'simone@yahoo.it');
 var_dump($user1);
+
+
+//!------------------------------------------------------!//
+//# creiamo un utente premium usato la base dell'utente creato in precendenza
+class PremiumUser extends BaseUser
+{
+    public $premium_discount;
+    public $expiration_date;
+}
+
+
+//% se dovessi reinscivere il costruttore eredito il costruttore del padre
+$user_2_premium = new PremiumUser("Francesco", "De Santis", "francesco@gmail.com");
+$user_2_premium->premium_discount = 80;
+$user_2_premium->expiration_date = '22/10/22';
+
+
+
+var_dump($user_2_premium);
+
+
+
+
+
+
+
+
+//! */*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/*!//
+class TopPremiumUser extends PremiumUser
+{
+    //!problema stampa valore .... classe ereditata da un altra classe anchessa ereditata
+    public $ultra_discount;
+}
+
+$user_3_ultra = new TopPremiumUser("Giorgia", "Tomassi", "giorgia@outlook.it");
+$user_3_ultra->$ultra_discount = 90;
+
+
+
+
+
+var_dump($user_3_ultra);
+
+
+
+
+
+
 
 ?>
 
@@ -94,9 +142,22 @@ var_dump($user1);
 </head>
 
 <body>
-    ciao ciao
+
     <div>
+        <h1>Prodotto</h1>
         <?php foreach ($shampoo as $property => $value) { ?>
+            <h3><?php echo $property ?> : <?php echo $value ?></h3>
+        <?php } ?>
+        <h1>Utente</h1>
+        <?php foreach ($user1 as $property => $value) { ?>
+            <h3><?php echo $property ?> : <?php echo $value ?></h3>
+        <?php } ?>
+        <h1>Utente-Premium</h1>
+        <?php foreach ($user_2_premium as $property => $value) { ?>
+            <h3><?php echo $property ?> : <?php echo $value ?></h3>
+        <?php } ?>
+        <h1>Utente-Ultra-Premium</h1>
+        <?php foreach ($user_3_ultra as $property => $value) { ?>
             <h3><?php echo $property ?> : <?php echo $value ?></h3>
         <?php } ?>
     </div>
