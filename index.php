@@ -96,11 +96,9 @@ var_dump($user1);
 <body>
     ciao ciao
     <div>
-        <h1>
-            <p>
-
-            </p> ciao
-        </h1>
+        <?php foreach ($shampoo as $property => $value) { ?>
+            <h3><?php echo $property ?> : <?php echo $value ?></h3>
+        <?php } ?>
     </div>
 </body>
 
