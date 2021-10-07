@@ -39,7 +39,13 @@ class Product
     //%cambio il valore di una proprietà in questo caso il tipo
     public function setType($new_type)
     {
-        return $this->type = $new_type;
+        //# gestisco errore di inserimento
+        if (is_numeric($new_type)) {
+            throw new Exception('Il valoreinserito non è valido');
+        } else {
+
+            return $this->type = $new_type;
+        }
     }
     //*Other methods
     public function getDiscount($percentage = 20)
@@ -50,6 +56,11 @@ class Product
 }
 //instanzio prodotto
 $shampoo = new Product('01', 'loreal',);
+try {
+    $shampoo->setType('1');
+} catch (Exception $e) {
+    echo "Error:" . $e->getMessage('');
+}
 
 var_dump($shampoo);
 echo $shampoo->getDiscount();
@@ -103,7 +114,7 @@ var_dump($user_2_premium);
 
 
 //! */*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/**/*/*/*!//
-class TopPremiumUser extends PremiumUser
+class TopPremiumUser extends BaseUser
 {
     //!problema stampa valore .... classe ereditata da un altra classe anchessa ereditata
     public $ultra_discount;
