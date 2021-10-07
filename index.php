@@ -27,12 +27,32 @@ class Product
         $this->id = $id;
         $this->brand = $brand;
         $this->barcode = $barcode;
+        $this->price = 50;
+    }
+    //* GETTER
+    //% mi restituisce un qualcosa in questo casa il nome 
+    public function getName()
+    {
+        return $this->name;
+    }
+    //* Setter
+    //%cambio il valore di una proprietà in questo caso il tipo
+    public function setType($new_type)
+    {
+        return $this->type = $new_type;
+    }
+    //*Other methods
+    public function getDiscount($percentage = 20)
+    {
+        $discount = $this->price - ($this->price * ($percentage / 100));
+        return "lo sconto applicato è ($percentage)%,il prezzo scontato è :" . $discount;
     }
 }
 //instanzio prodotto
 $shampoo = new Product('01', 'loreal',);
-var_dump($shampoo);
 
+var_dump($shampoo);
+echo $shampoo->getDiscount();
 //# classe utente
 class User
 {
