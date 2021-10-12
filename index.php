@@ -59,7 +59,7 @@ $shampoo = new Product('01', 'loreal',);
 try {
     $shampoo->setType('1');
 } catch (Exception $e) {
-    echo "Error:" . $e->getMessage('');
+    echo "Error:" . $e->getMessage();
 }
 
 var_dump($shampoo);
